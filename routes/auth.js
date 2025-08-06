@@ -31,7 +31,7 @@ router.post("/login", async (req, res) => {
     console.log("Login request received:", req.body);
 
     const { email, password } = req.body;
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email: email.trim().toLowerCase() });
 
     if (!user) {
       console.log("User not found:", email);
